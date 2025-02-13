@@ -5,39 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Love Songs Just for You ❤️</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #ffe6e6; padding: 20px; }
-        .container { margin-top: 50px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background-color: #ffe6e6; 
+            padding: 20px; 
+        }
+        .container { 
+            max-width: 600px; 
+            margin: auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        }
         h1 { color: #ff4d4d; }
-        .song-display { margin: 20px 0; font-size: 1.2em; }
-        button { padding: 10px 15px; font-size: 1em; background: #ff4d4d; color: white; border: none; border-radius: 5px; cursor: pointer; }
-        button:hover { background: #ff3333; }
+        .song { 
+            margin: 20px 0; 
+            padding: 10px; 
+            background: #fff4f4; 
+            border-radius: 8px; 
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
+        }
+        .song-title { font-size: 1.2em; font-weight: bold; color: #ff3333; }
+        .song-caption { font-size: 1em; color: #555; }
+        iframe { width: 100%; height: 200px; border-radius: 8px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>💌 Love Songs Just for You 🎶</h1>
-        <p>Click below to see a special song and why I chose it for you!</p>
-        <div class="song-display">
-            <h2 id="songTitle">🎵 Click to Reveal 🎵</h2>
-            <p id="songCaption"></p>
+        <h1>🎵 Love Songs Just for You 💕</h1>
+        <p>Here are ten songs that remind me of you and why they are special. 😊</p>
+
+        <div class="song">
+            <div class="song-title">1. Can’t Help Falling in Love – Elvis Presley</div>
+            <div class="song-caption">Because I truly can’t help falling in love with you. 💕</div>
+            <iframe src="https://www.youtube.com/embed/vGJTaP6anOU" allowfullscreen></iframe>
         </div>
-        <button onclick="displaySong()">Next Song</button>
+
+        <div class="song">
+            <div class="song-title">2. Yellow – Coldplay</div>
+            <div class="song-caption">Because you are my sunshine, and everything about you is golden. ☀️</div>
+            <iframe src="https://www.youtube.com/embed/yKNxeF4KMsY" allowfullscreen></iframe>
+        </div>
+
+        <div class="song">
+            <div class="song-title">3. Best Part – Daniel Caesar & H.E.R.</div>
+            <div class="song-caption">Because every moment with you is the best part of my life. 🥰</div>
+            <iframe src="https://www.youtube.com/embed/vBy7FaAP3to" allowfullscreen></iframe>
+        </div>
+
+        <div class="song">
+            <div class="song-title">4. Talking to the Moon – Bruno Mars</div>
+            <div class="song-caption">Because even when we’re apart, I still talk to the moon thinking of you. 🌙</div>
+            <iframe src="https://www.youtube.com/embed/7G0NRaYeCe0" allowfullscreen></iframe>
+        </div>
+
+        <div class="song">
+            <div class="song-title">5. Eres – Café Tacvba</div>
+            <div class="song-caption">Because this song describes how much you mean to me. ❤️</div>
+            <iframe src="https://www.youtube.com/embed/hAObd1R00oM" allowfullscreen></iframe>
+        </div>
+
+        <div class="song">
+            <div class="song-title">6. Just the Way You Are – Bruno Mars</div>
+            <div class="song-caption">Because you are perfect just the way you are. 💖</div>
+            <iframe src="https://www.youtube.com/embed/LjhCEhWiKXk" allowfullscreen></iframe>
+        </div>
+
+        <div class="song">
+            <div class="song-title">7. Thinking Out Loud – Ed Sheeran</div>
+            <div class="song-caption">Because I want to love you even when we’re 70. 💍</div>
+            <iframe src="https://www.youtube.com/embed/lp-EO5I60KA" allowfullscreen></iframe>
+        </div>
+
+        <div class="song">
+            <div class="song-title">8. All of Me – John Legend</div>
+            <div class="song-caption">Because I love all of you, your curves and all your edges. 💗</div>
+            <iframe src="https://www.youtube.com/embed/450p7goxZqg" allowfullscreen></iframe>
+        </div>
+
+        <div class="song">
+            <div class="song-title">9. Perfect – Ed Sheeran</div>
+            <div class="song-caption">Because dancing in the dark with you in my arms is a dream. ✨</div>
+            <iframe src="https://www.youtube.com/embed/2Vv-BfVoq4g" allowfullscreen></iframe>
+        </div>
+
+        <div class="song">
+            <div class="song-title">10. Love Story – Taylor Swift</div>
+            <div class="song-caption">Because you are my fairytale ending. 👑</div>
+            <iframe src="https://www.youtube.com/embed/8xg3vE8Ie_E" allowfullscreen></iframe>
+        </div>
     </div>
-
-    <script>
-        const songs = [
-            { title: "Can’t Help Falling in Love – Elvis Presley", caption: "Because I truly can’t help falling in love with you. 💕" },
-            { title: "Yellow – Coldplay", caption: "Because you are my sunshine, and everything about you is golden. ☀️" },
-            { title: "Best Part – Daniel Caesar & H.E.R.", caption: "Because every moment with you is the best part of my life. 🥰" },
-            { title: "Talking to the Moon – Bruno Mars", caption: "Because even when we’re apart, I still talk to the moon thinking of you. 🌙" },
-            { title: "Eres – Café Tacvba", caption: "Because this song describes how much you mean to me. ❤️" }
-        ];
-
-        function displaySong() {
-            let randomIndex = Math.floor(Math.random() * songs.length);
-            document.getElementById("songTitle").innerText = songs[randomIndex].title;
-            document.getElementById("songCaption").innerText = songs[randomIndex].caption;
-        }
-    </script>
 </body>
 </html>
