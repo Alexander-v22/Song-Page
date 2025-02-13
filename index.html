@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Songs Just for You ❤️</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #ffe6e6; padding: 20px; }
+        .container { margin-top: 50px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        h1 { color: #ff4d4d; }
+        .song-display { margin: 20px 0; font-size: 1.2em; }
+        button { padding: 10px 15px; font-size: 1em; background: #ff4d4d; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #ff3333; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💌 Love Songs Just for You 🎶</h1>
+        <p>Click below to see a special song and why I chose it for you!</p>
+        <div class="song-display">
+            <h2 id="songTitle">🎵 Click to Reveal 🎵</h2>
+            <p id="songCaption"></p>
+        </div>
+        <button onclick="displaySong()">Next Song</button>
+    </div>
+
+    <script>
+        const songs = [
+            { title: "Can’t Help Falling in Love – Elvis Presley", caption: "Because I truly can’t help falling in love with you. 💕" },
+            { title: "Yellow – Coldplay", caption: "Because you are my sunshine, and everything about you is golden. ☀️" },
+            { title: "Best Part – Daniel Caesar & H.E.R.", caption: "Because every moment with you is the best part of my life. 🥰" },
+            { title: "Talking to the Moon – Bruno Mars", caption: "Because even when we’re apart, I still talk to the moon thinking of you. 🌙" },
+            { title: "Eres – Café Tacvba", caption: "Because this song describes how much you mean to me. ❤️" }
+        ];
+
+        function displaySong() {
+            let randomIndex = Math.floor(Math.random() * songs.length);
+            document.getElementById("songTitle").innerText = songs[randomIndex].title;
+            document.getElementById("songCaption").innerText = songs[randomIndex].caption;
+        }
+    </script>
+</body>
+</html>
