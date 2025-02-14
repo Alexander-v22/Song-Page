@@ -3,99 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Songs Just for You ❤️</title>
+    <title> Surpise ❤️</title>
     <style>
         body { 
             font-family: Arial, sans-serif; 
             text-align: center; 
             background-color: #ffe6e6; 
             padding: 20px; 
+            margin: 0;
+            overflow: hidden; /* Prevent scrolling until unlocked */
+            position: relative;
         }
         .container { 
-            max-width: 600px; 
+            max-width: 800px; 
             margin: auto; 
             background: white; 
             padding: 20px; 
             border-radius: 10px; 
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            position: relative;
+            z-index: 10; 
         }
-        h1 { color: #ff4d4d; }
+        h1 { 
+            color: #ff4d4d;
+            text-align: center;
+        }
         .song { 
-            margin: 20px 0; 
+            margin: 20px auto; 
             padding: 10px; 
-            background: #fff4f4; 
+            background: #ffe6ea; 
             border-radius: 8px; 
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
+            width: 80%;
         }
-        .song-title { font-size: 1.2em; font-weight: bold; color: #ff3333; }
-        .song-caption { font-size: 1em; color: #555; }
-        iframe { width: 100%; height: 200px; border-radius: 8px; }
+        .song-title { 
+            font-size: 1.2em; 
+            font-weight: bold; 
+            color: #ff3333; 
+        }
+        .message-box { 
+            width: 90%; 
+            padding: 10px; 
+            margin-top: 5px; 
+            border-radius: 5px; 
+            background: #fff4f4; 
+            color: #333; 
+            font-size: 1em;
+            font-weight: bold;
+            border: 1px solid #ffcccc;
+            text-align: center;
+            margin: auto;
+        }
+        .personal-photo {
+            width: 80%;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        iframe { 
+            width: 100%; 
+            border-radius: 12px; 
+            z-index: 10; 
+            position: relative; 
+        }
+
+        /* Modal Overlay */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .modal button {
+            margin: 15px;
+            padding: 12px 20px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .yes-btn {
+            background: #ff4d4d;
+            color: white;
+        }
+
+        .yes-btn:hover {
+            background: #ff1a1a;
+        }
+
+        .no-btn {
+            background: #ccc;
+            color: black;
+        }
+
+        .no-btn:hover {
+            background: #999;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Floating hearts animation */
+        @keyframes floating {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-20px); opacity: 0.7; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .heart {
+            position: absolute;
+            font-size: 35px;
+            animation: floating 4s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🎵 Love Songs Just for You 💕</h1>
-        <p>Here are ten songs that remind me of you and why they are special. 😊</p>
 
-        <div class="song">
-            <div class="song-title">1. Can’t Help Falling in Love – Elvis Presley</div>
-            <div class="song-caption">Because I truly can’t help falling in love with you. 💕</div>
-            <iframe src="https://www.youtube.com/embed/vGJTaP6anOU" allowfullscreen></iframe>
-        </div>
+    <!-- Valentine Prompt -->
+    <div class="modal" id="valentineModal">
+        <p> Will you be my Valentine? 💖</p>
+        <button class="yes-btn" onclick="unlockWebsite()"> Yes💕</button>
+        <button class="no-btn" onclick="denyAccess()"> No </button>
+    </div>
 
-        <div class="song">
-            <div class="song-title">2. Yellow – Coldplay</div>
-            <div class="song-caption">Because you are my sunshine, and everything about you is golden. ☀️</div>
-            <iframe src="https://www.youtube.com/embed/yKNxeF4KMsY" allowfullscreen></iframe>
-        </div>
+    <!-- Hearts Container -->
+    <div id="hearts-container"></div>
 
-        <div class="song">
-            <div class="song-title">3. Best Part – Daniel Caesar & H.E.R.</div>
-            <div class="song-caption">Because every moment with you is the best part of my life. 🥰</div>
-            <iframe src="https://www.youtube.com/embed/vBy7FaAP3to" allowfullscreen></iframe>
-        </div>
+    <!-- Main Content (Hidden initially) -->
+    <div class="hidden" id="mainContent">
+        <div class="container">
+            <h1>Love Songs Just For You 💕🎵</h1>
 
-        <div class="song">
-            <div class="song-title">4. Talking to the Moon – Bruno Mars</div>
-            <div class="song-caption">Because even when we’re apart, I still talk to the moon thinking of you. 🌙</div>
-            <iframe src="https://www.youtube.com/embed/7G0NRaYeCe0" allowfullscreen></iframe>
-        </div>
+            <!-- Picture of You Two -->
+           
+            <p> Bits and pieces of these songs hold meaning to me and are used to write the pargraphs below. I think the order should be, listen to the song first and then the paragraph bunny. Thank you for being my valentine my love </p>
 
-        <div class="song">
-            <div class="song-title">5. Eres – Café Tacvba</div>
-            <div class="song-caption">Because this song describes how much you mean to me. ❤️</div>
-            <iframe src="https://www.youtube.com/embed/hAObd1R00oM" allowfullscreen></iframe>
-        </div>
+            <!-- Spotify Playlist Embed -->
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/63XPGiuO13J8IGR4Z67OqJ?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
-        <div class="song">
-            <div class="song-title">6. Just the Way You Are – Bruno Mars</div>
-            <div class="song-caption">Because you are perfect just the way you are. 💖</div>
-            <iframe src="https://www.youtube.com/embed/LjhCEhWiKXk" allowfullscreen></iframe>
-        </div>
+            <p> Even though there aren't many songs, each one is dedicated to you and holds a special meaning, representing my love for you Ana Sanchez.
+                 </p>
 
-        <div class="song">
-            <div class="song-title">7. Thinking Out Loud – Ed Sheeran</div>
-            <div class="song-caption">Because I want to love you even when we’re 70. 💍</div>
-            <iframe src="https://www.youtube.com/embed/lp-EO5I60KA" allowfullscreen></iframe>
-        </div>
+            <!-- Song List with Fixed Messages -->
+            <div class="song">
+                <div class="song-title">1.Una Linda Mujer – Nivel </div>
+                <div class="message-box">I chose this song first, to illustrate my desire to go through with the question asked within the song.” Porque no puedo decirte que yo te amo…”. I yearned to tell you my feelings, but I couldn't tell you without seeing the kind of person you were, to know I didn't just fall for your looks, but to see who I was entrusting my heart to. During our years of high school, you showed me what kind of woman you were: a woman of self-respect, confidence, and maturity. Knowing this, I knew I had to be the only one to love you, to cherish you, to care for you. I had to best everyone in the race to make you theirs. A woman such as yourself is one in a million. I may have terrible grades in math, but I know I'm capable enough to trust the odds and hand you my heart, and dedicate it to you wholeheartedly, so I did.  
+                </div>
+            </div>
 
-        <div class="song">
-            <div class="song-title">8. All of Me – John Legend</div>
-            <div class="song-caption">Because I love all of you, your curves and all your edges. 💗</div>
-            <iframe src="https://www.youtube.com/embed/450p7goxZqg" allowfullscreen></iframe>
-        </div>
+            <div class="song">
+                <div class="song-title">2. No Es Mentira – Los Primos Del Esta</div>
+                <div class="message-box">Next, I won't say too much about this song. This song captivates what I see that you can't. You may argue that the last paragraph concluded that you are a woman of confidence. You are beautifully entirely my love, perfect eyes, perfect smile, perfect personality. I am qualified to speak about perfection because I'd like to say I'm a perfectionist and seeing you, I saw none. None. Seeing nothing that I couldn't love, I decided to confess my feelings for you.(Do not pay attion to minute 1:47) 
+                </div>
+            </div>
 
-        <div class="song">
-            <div class="song-title">9. Perfect – Ed Sheeran</div>
-            <div class="song-caption">Because dancing in the dark with you in my arms is a dream. ✨</div>
-            <iframe src="https://www.youtube.com/embed/2Vv-BfVoq4g" allowfullscreen></iframe>
-        </div>
+            <div class="song">
+                <div class="song-title">3. Nuestras Metas – Ivan Orozco.</div>
+                <div class="message-box">Although the beginning of the song talks about confessing love, the goals and desires within the song do not change. I wish to make you the happiest woman, the woman with the biggest grin next to her beloved. Me. Nothing short of the biggest, brightest smile, for you are the only woman who I wish to make this happy.  The only one who I want to stand next to and have a future with. I want to be your knight in shiny armor every princess awaits before being saved, I want to be your knight who protects you until the day we grow old and have to hold our hands to get down the stairs. I talk big about making you the happiest, but to be completely honest, I am a selfish man. Who wouldn't want to be a felicitous person? And being next to you gives me the privilege of being fortunate and happy, my love. </div>
+            </div>
 
-        <div class="song">
-            <div class="song-title">10. Love Story – Taylor Swift</div>
-            <div class="song-caption">Because you are my fairytale ending. 👑</div>
-            <iframe src="https://www.youtube.com/embed/8xg3vE8Ie_E" allowfullscreen></iframe>
+            <div class="song">
+                <div class="song-title">4. Nada Valgo Sin tu Amor – Juanes </div>
+                <div class="message-box"> I know, who would've thought I would know a song such as this one? To be fair, I chose this song to give you context as to why I say I'm selfish. This song shows what I want, what I crave, and that is to have my heart filled. No one can do that but you Ana. You and only you. I think the analysis for this song is very minimal because the song does a good job of saying what I need and what I am without. And that is you.  
+                </div>
+            </div>
+
+            <div class="song">
+                <div class="song-title">5. Amor – DannyLuz & Alta Elegancia </div>
+                <div class="message-box"> I want to listen to this song together over FaceTime my love.
+                </div>
+            </div>
         </div>
     </div>
+
+    <script>
+        function unlockWebsite() {
+            document.getElementById("valentineModal").style.display = "none"; 
+            document.getElementById("mainContent").classList.remove("hidden"); 
+            document.body.style.overflow = "auto"; 
+            window.addEventListener("scroll", () => { // Start adding hearts only after unlocking
+                if (currentHearts < maxHearts) {
+                    createHearts(3); // Add 3 hearts per scroll event
+                }
+            });
+        }
+    
+        function denyAccess() {
+            alert("ONLY TIME ILL BE GOOFY GO BACK AND CLICK YES DUMMY BAI IF YOU DONT BAIIIII");
+        }
+    
+        const maxHearts = 150; 
+        let currentHearts = 0; 
+        let heartCooldown = false; 
+    
+        function createHearts(amount = 10) {
+            if (heartCooldown) return; // Prevent rapid spawning
+    
+            heartCooldown = true; // Activate cooldown
+            setTimeout(() => { heartCooldown = false; }, 50); // Cooldown of 500ms (adjust if needed)
+    
+            const container = document.getElementById("hearts-container");
+            const emojis = ["❤️", "💖", "💕", "💘", "💓", "💗", "💞"]; // Different heart styles
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+    
+            for (let i = 0; i < amount; i++) {
+                if (currentHearts >= maxHearts) {
+                    removeOldestHeart(); // Remove oldest heart if limit is reached
+                }
+    
+                let heart = document.createElement("span");
+                heart.className = "heart";
+                heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+    
+                // Generate random X position, keeping hearts only in the pink areas
+                let randomX;
+                if (Math.random() > 0.5) {
+                    randomX = Math.random() * (screenWidth * 0.2); // Left side
+                } else {
+                    randomX = screenWidth * 0.8 + Math.random() * (screenWidth * 0.2); // Right side
+                }
+    
+                // Generate a random Y position within the visible screen height + some buffer for scrolling
+                let randomY = window.scrollY + Math.random() * screenHeight * 0.8; 
+    
+                heart.style.left = `${randomX}px`;
+                heart.style.top = `${randomY}px`;
+    
+                container.appendChild(heart);
+                currentHearts++; // Increase heart count
+            }
+        }
+    
+        function removeOldestHeart() {
+            const container = document.getElementById("hearts-container");
+            if (container.firstChild) {
+                container.removeChild(container.firstChild); // Remove the oldest heart
+                currentHearts--; // Decrease count
+            }
+        }
+    </script>
+    
 </body>
 </html>
